@@ -1,6 +1,6 @@
 *.iml
 .gradle
-/local.properties
+/starter/local.properties
 /.idea/caches/build_file_checksum.ser
 /.idea/libraries
 /.idea/modules.xml

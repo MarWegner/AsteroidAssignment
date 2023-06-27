@@ -4,7 +4,7 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.*
 import com.udacity.asteroidradar.Asteroid
-import com.udacity.asteroidradar.Constants.NASA_API_KEY
+import com.udacity.asteroidradar.BuildConfig
 import com.udacity.asteroidradar.PictureOfDay
 import com.udacity.asteroidradar.api.NasaApi
 import com.udacity.asteroidradar.database.AstroidDatabase
@@ -56,7 +56,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         withContext(Dispatchers.IO){
             try {
                 _picOfTheDay.postValue(
-                    NasaApi.retrofitService.getPicOfTheDay(NASA_API_KEY)
+                    NasaApi.retrofitService.getPicOfTheDay(BuildConfig.API_KEY_NAME)
                 )
             } catch (err: Exception) {
                 Log.e("updatePic", err.printStackTrace().toString())

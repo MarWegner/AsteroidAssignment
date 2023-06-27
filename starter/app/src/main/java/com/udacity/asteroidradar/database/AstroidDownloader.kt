@@ -1,7 +1,7 @@
 package com.udacity.asteroidradar.database
 
 import android.util.Log
-import com.udacity.asteroidradar.Constants.NASA_API_KEY
+import com.udacity.asteroidradar.BuildConfig
 import com.udacity.asteroidradar.api.NasaApi
 import com.udacity.asteroidradar.api.parseAsteroidsJsonResult
 import kotlinx.coroutines.Dispatchers
@@ -24,7 +24,7 @@ class AstroidDownloader(private val database: AstroidDatabase) {
     suspend fun getAstroidsFromNasa(){
         withContext(Dispatchers.IO){
             try{
-                val asteroids = NasaApi.retrofitService.getAstroids(NASA_API_KEY)
+                val asteroids = NasaApi.retrofitService.getAstroids(BuildConfig.API_KEY_NAME)
                 Log.i("bla",asteroids)
                 val parsedResult = parseAsteroidsJsonResult(JSONObject(asteroids))
                 database.astroidDao.insertAll(*parsedResult.toTypedArray())

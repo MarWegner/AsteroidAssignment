@@ -24,7 +24,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
    val asteroidList  = activeFilter.switchMap{ when(it) {
         Filter.TODAY -> downloader.todaysAstroidList
-        Filter.WEEK -> downloader.lastWeeksAstroidList
+        Filter.WEEK -> downloader.nextWeeksAstroidList
         else -> downloader.astroidList
     } }
 

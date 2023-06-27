@@ -16,9 +16,9 @@ class AstroidDownloader(private val database: AstroidDatabase) {
 
     val todaysAstroidList = database.astroidDao.getsAstroidsByDay(LocalDateTime.now().format(
         DateTimeFormatter.ISO_DATE))
-    val lastWeeksAstroidList = database.astroidDao.getAstroidsFromDateToDate(
-        LocalDateTime.now().minusDays(7).format(DateTimeFormatter.ISO_DATE),
+    val nextWeeksAstroidList = database.astroidDao.getAstroidsFromDateToDate(
         LocalDateTime.now().format(DateTimeFormatter.ISO_DATE),
+        LocalDateTime.now().plusDays(7).format(DateTimeFormatter.ISO_DATE)
     )
 
     suspend fun getAstroidsFromNasa(){
